@@ -3,11 +3,24 @@
   top: 0;
   left: 0;
   right: 0;
-  background: rgba(255, 255, 255, 0.95);
+  background: rgba(255, 255, 255, 0.8);
   backdrop-filter: blur(10px);
   z-index: 1000;
-  border-bottom: 1px solid var(--border-light);
+  border-bottom: 1px solid transparent;
   transition: all 0.3s ease;
+  transform: translateY(0);
+  
+  // Scrolled state - more opaque background
+  &.scrolled {
+    background: rgba(255, 255, 255, 0.95);
+    border-bottom: 1px solid var(--border-light);
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+  }
+  
+  // Hidden state - slide up
+  &.hidden {
+    transform: translateY(-100%);
+  }
 }
 
 .navbar {
@@ -128,8 +141,33 @@
   }
 }
 
+// Tablet Responsive
+@media (max-width: 1024px) {
+  .navbar {
+    padding: 0.75rem 1rem;
+  }
+  
+  .nav-menu {
+    gap: 1.5rem;
+    
+    .nav-link {
+      font-size: 0.9rem;
+    }
+  }
+}
+
 // Mobile Responsive
 @media (max-width: 768px) {
+  .navbar {
+    padding: 1rem;
+  }
+  
+  .nav-brand .logo {
+    .logo-text .name {
+      font-size: 1.1rem;
+    }
+  }
+  
   .nav-menu {
     position: fixed;
     top: 100%;
@@ -138,12 +176,14 @@
     background: rgba(255, 255, 255, 0.98);
     backdrop-filter: blur(15px);
     flex-direction: column;
-    padding: 2rem 0;
+    padding: 2rem 1rem;
     gap: 1.5rem;
     transform: translateX(-100%);
-    transition: transform 0.3s ease;
+    transition: all 0.3s ease;
     border-top: 1px solid var(--border-light);
-    box-shadow: 0 4px 20px var(--shadow-light);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    max-height: calc(100vh - 80px);
+    overflow-y: auto;
     
     &.active {
       transform: translateX(0);
@@ -152,16 +192,20 @@
     .nav-link {
       font-size: 1.1rem;
       padding: 0.75rem 0;
+      text-align: center;
       
       &.resume-link {
         margin-top: 1rem;
         padding: 0.75rem 1.5rem;
+        align-self: center;
+        min-width: 120px;
       }
     }
   }
   
   .nav-toggle {
     display: flex;
+    z-index: 1001;
     
     &.active {
       .bar:nth-child(1) {
@@ -179,7 +223,36 @@
   }
 }
 
-// Add padding to body to account for fixed header
-body {
-  padding-top: 80px;
+// Small Mobile Responsive
+@media (max-width: 480px) {
+  .navbar {
+    padding: 0.75rem;
+  }
+  
+  .nav-brand .logo {
+    gap: 0.5rem;
+    
+    .logo-icon {
+      font-size: 1.8rem;
+    }
+    
+    .logo-text {
+      .name {
+        font-size: 1rem;
+      }
+      
+      .title {
+        font-size: 0.8rem;
+      }
+    }
+  }
+  
+  .nav-toggle {
+    .bar {
+      width: 22px;
+      height: 2.5px;
+    }
+  }
 }
+
+
