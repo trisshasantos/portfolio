@@ -1,0 +1,261 @@
+/* Global Styles for Pharmacist Portfolio */
+
+// Medicine-themed Color Palette
+:root {
+  // Primary Colors (Healthcare Blue & Green)
+  --primary-blue: #2c5aa0;
+  --primary-blue-dark: #1e3f73;
+  --primary-blue-light: #4a7bc8;
+  --medical-green: #00a86b;
+  --medical-green-dark: #008055;
+  --medical-green-light: #33c085;
+  
+  // Professional Grays
+  --text-dark: #2c3e50;
+  --text-gray: #5a6c7d;
+  --text-light: #8fa4b3;
+  --bg-light: #f8fafc;
+  --bg-white: #ffffff;
+  --border-light: #e2e8f0;
+  --shadow-light: rgba(0, 0, 0, 0.1);
+  --shadow-medium: rgba(0, 0, 0, 0.15);
+  
+  // Accent Colors
+  --accent-orange: #ff6b35;
+  --accent-purple: #6c5ce7;
+  --success-green: #00b894;
+  --warning-yellow: #fdcb6e;
+  --error-red: #e17055;
+}
+
+// Reset and Base Styles
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.6;
+  color: var(--text-dark);
+  background-color: var(--bg-light);
+  overflow-x: hidden;
+}
+
+// Typography
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+  color: var(--text-dark);
+}
+
+h1 {
+  font-size: 2.5rem;
+  font-weight: 800;
+}
+
+h2 {
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+p {
+  margin-bottom: 1rem;
+  color: var(--text-gray);
+  font-size: 1.1rem;
+}
+
+a {
+  text-decoration: none;
+  color: var(--primary-blue);
+  transition: color 0.3s ease;
+  
+  &:hover {
+    color: var(--primary-blue-dark);
+  }
+}
+
+// Container and Layout
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.section {
+  padding: 5rem 0;
+  
+  &:nth-child(even) {
+    background-color: var(--bg-white);
+  }
+}
+
+// Button Styles
+.btn {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 1rem;
+  text-align: center;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  
+  &.btn-primary {
+    background: linear-gradient(135deg, var(--primary-blue), var(--primary-blue-dark));
+    color: white;
+    box-shadow: 0 4px 15px rgba(44, 90, 160, 0.3);
+    
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(44, 90, 160, 0.4);
+    }
+  }
+  
+  &.btn-secondary {
+    background: transparent;
+    color: var(--primary-blue);
+    border: 2px solid var(--primary-blue);
+    
+    &:hover {
+      background: var(--primary-blue);
+      color: white;
+    }
+  }
+  
+  &.btn-success {
+    background: linear-gradient(135deg, var(--medical-green), var(--medical-green-dark));
+    color: white;
+    box-shadow: 0 4px 15px rgba(0, 168, 107, 0.3);
+    
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0, 168, 107, 0.4);
+    }
+  }
+}
+
+// Card Styles
+.card {
+  background: white;
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 4px 20px var(--shadow-light);
+  border: 1px solid var(--border-light);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 30px var(--shadow-medium);
+  }
+}
+
+// Medical Icons and Decorations
+.medical-icon {
+  font-size: 2.5rem;
+  color: var(--medical-green);
+  margin-bottom: 1rem;
+}
+
+// Responsive Design
+@media (max-width: 768px) {
+  .container {
+    padding: 0 1rem;
+  }
+  
+  .section {
+    padding: 3rem 0;
+  }
+  
+  h1 {
+    font-size: 2rem;
+  }
+  
+  h2 {
+    font-size: 1.75rem;
+  }
+  
+  h3 {
+    font-size: 1.25rem;
+  }
+}
+
+// Animations
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.animate-fadeInUp {
+  animation: fadeInUp 0.8s ease-out;
+}
+
+.animate-fadeInDown {
+  animation: fadeInDown 0.8s ease-out;
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.8s ease-out;
+}
+
+// Gradient Background
+.gradient-bg {
+  background: linear-gradient(135deg, var(--primary-blue-light), var(--medical-green-light));
+}
+
+.medical-pattern {
+  position: relative;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+      radial-gradient(circle at 20% 50%, rgba(44, 90, 160, 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 80% 20%, rgba(0, 168, 107, 0.1) 0%, transparent 50%);
+    pointer-events: none;
+  }
+}

@@ -1,0 +1,496 @@
+// Hero Section
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+  width: 100%;
+}
+
+.hero-text {
+  .hero-subtitle {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 1.1rem;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  
+  .hero-title {
+    font-size: 3.5rem;
+    font-weight: 800;
+    color: white;
+    margin-bottom: 0.5rem;
+    line-height: 1.1;
+  }
+  
+  .hero-profession {
+    font-size: 1.5rem;
+    color: rgba(255, 255, 255, 0.95);
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+  }
+  
+  .hero-description {
+    font-size: 1.2rem;
+    color: rgba(255, 255, 255, 0.9);
+    line-height: 1.6;
+    margin-bottom: 2.5rem;
+  }
+  
+  .hero-buttons {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    
+    .btn {
+      padding: 1rem 2rem;
+      font-size: 1.1rem;
+      font-weight: 600;
+    }
+  }
+}
+
+.hero-image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+  .profile-image-container {
+    width: 400px;
+    height: 400px;
+    position: relative;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 6px solid rgba(255, 255, 255, 0.4);
+    box-shadow: 
+      0 25px 50px rgba(0, 0, 0, 0.3),
+      0 0 0 1px rgba(255, 255, 255, 0.1) inset;
+    transition: all 0.3s ease;
+    
+    &:hover {
+      transform: translateY(-5px);
+      box-shadow: 
+        0 35px 60px rgba(0, 0, 0, 0.4),
+        0 0 0 1px rgba(255, 255, 255, 0.2) inset;
+    }
+    
+    .profile-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      border-radius: 50%;
+      transition: all 0.4s ease;
+      filter: brightness(0.95) contrast(1.1);
+      
+      &:hover {
+        transform: scale(1.03);
+        filter: brightness(1.05) contrast(1.15);
+      }
+    }
+    
+    .floating-pills {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      
+      .pill {
+        position: absolute;
+        font-size: 2rem;
+        animation: float 3s ease-in-out infinite;
+        
+        &.pill-1 {
+          top: 20%;
+          right: 10%;
+          animation-delay: 0s;
+        }
+        
+        &.pill-2 {
+          top: 60%;
+          left: 5%;
+          animation-delay: 1s;
+        }
+        
+        &.pill-3 {
+          bottom: 25%;
+          right: 15%;
+          animation-delay: 2s;
+        }
+        
+        &.pill-4 {
+          top: 10%;
+          left: 25%;
+          animation-delay: 1.5s;
+        }
+      }
+    }
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+// Stats Section
+.stats-section {
+  background: var(--bg-white);
+  padding: 4rem 0;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+}
+
+.stat-card {
+  text-align: center;
+  padding: 2rem 1.5rem;
+  
+  .stat-number {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--primary-blue);
+    margin-bottom: 0.5rem;
+    background: linear-gradient(135deg, var(--primary-blue), var(--medical-green));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1;
+  }
+  
+  .stat-label {
+    font-size: 1rem;
+    color: var(--text-dark);
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+    line-height: 1.2;
+  }
+  
+  .stat-description {
+    font-size: 0.9rem;
+    color: var(--text-gray);
+    line-height: 1.4;
+    font-weight: 400;
+  }
+}
+
+// Services Preview Section
+.services-preview {
+  padding: 5rem 0;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 4rem;
+  
+  h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  p {
+    font-size: 1.2rem;
+    color: var(--text-gray);
+    max-width: 600px;
+    margin: 0 auto;
+  }
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.service-card {
+  text-align: center;
+  padding: 2.5rem 2rem;
+  
+  .service-icon {
+    font-size: 4rem;
+    margin-bottom: 1.5rem;
+    display: block;
+  }
+  
+  h3 {
+    color: var(--text-dark);
+    margin-bottom: 1rem;
+    font-size: 1.25rem;
+  }
+  
+  p {
+    color: var(--text-gray);
+    line-height: 1.6;
+  }
+}
+
+// Clinical & Pharmaceutical Expertise Section
+.clinical-expertise {
+  padding: 5rem 0;
+  background: var(--bg-white);
+}
+
+.expertise-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2rem;
+}
+
+.expertise-card {
+  text-align: center;
+  padding: 2.5rem 2rem;
+  
+  .expertise-icon {
+    font-size: 3.5rem;
+    margin-bottom: 1.5rem;
+    display: block;
+  }
+  
+  h3 {
+    color: var(--text-dark);
+    margin-bottom: 1rem;
+    font-size: 1.3rem;
+    font-weight: 600;
+  }
+  
+  p {
+    color: var(--text-gray);
+    line-height: 1.6;
+    font-size: 1rem;
+  }
+}
+
+// Editorial Expertise Section
+.editorial-expertise {
+  padding: 5rem 0;
+  background: var(--bg-light);
+}
+
+// Combined Strengths Section
+.combined-strengths {
+  padding: 5rem 0;
+  
+  .strengths-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+  }
+  
+  .strength-item {
+    text-align: center;
+    padding: 2rem 1.5rem;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    
+    .strength-icon {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      display: block;
+    }
+    
+    h3 {
+      color: white;
+      margin-bottom: 0.75rem;
+      font-size: 1.2rem;
+      font-weight: 600;
+    }
+    
+    p {
+      color: rgba(255, 255, 255, 0.9);
+      line-height: 1.5;
+      font-size: 0.95rem;
+    }
+  }
+}
+
+// Technical & Professional Competencies Section
+.technical-competencies {
+  padding: 5rem 0;
+  background: var(--bg-white);
+  
+  .competencies-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+  }
+  
+  .competency-category {
+    padding: 2rem;
+    background: var(--bg-light);
+    border-radius: 15px;
+    border-left: 5px solid var(--primary-blue);
+    
+    h3 {
+      color: var(--text-dark);
+      margin-bottom: 1.5rem;
+      font-size: 1.3rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    ul {
+      list-style: none;
+      
+      li {
+        position: relative;
+        padding-left: 1.5rem;
+        margin-bottom: 0.75rem;
+        color: var(--text-gray);
+        line-height: 1.5;
+        
+        &::before {
+          content: '✓';
+          position: absolute;
+          left: 0;
+          color: var(--medical-green);
+          font-weight: bold;
+        }
+      }
+    }
+  }
+}
+
+// Call to Action Section
+.cta-section {
+  padding: 4rem 0;
+  text-align: center;
+  
+  .cta-content {
+    max-width: 600px;
+    margin: 0 auto;
+    
+    h2 {
+      color: white;
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+    
+    p {
+      color: rgba(255, 255, 255, 0.9);
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+    }
+    
+    .btn {
+      padding: 1rem 2rem;
+      font-size: 1.1rem;
+    }
+  }
+}
+
+// Mobile Responsive
+@media (max-width: 768px) {
+  .hero-content {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+    text-align: center;
+  }
+  
+  .hero-text {
+    .hero-title {
+      font-size: 2.5rem;
+    }
+    
+    .hero-profession {
+      font-size: 1.25rem;
+    }
+    
+    .hero-description {
+      font-size: 1.1rem;
+    }
+    
+    .hero-buttons {
+      justify-content: center;
+      
+      .btn {
+        padding: 0.875rem 1.5rem;
+        font-size: 1rem;
+      }
+    }
+  }
+  
+  .hero-image {
+    .profile-image-container {
+      width: 280px;
+      height: 280px;
+      
+      .floating-pills .pill {
+        font-size: 1.5rem;
+      }
+    }
+  }
+  
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+  
+  .services-grid,
+  .expertise-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .strengths-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .competencies-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .section-header {
+    h2 {
+      font-size: 2rem;
+    }
+    
+    p {
+      font-size: 1.1rem;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .hero-text .hero-title {
+    font-size: 2rem;
+  }
+  
+  .hero-image .profile-image-container {
+    width: 220px;
+    height: 220px;
+    
+    .floating-pills .pill {
+      font-size: 1.2rem;
+    }
+  }
+  
+  .stat-card .stat-number {
+    font-size: 2.5rem;
+  }
+}

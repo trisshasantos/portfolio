@@ -1,0 +1,2 @@
+# This file prevents GitHub Pages from processing the site with Jekyll
+# Angular generates its own static files that don't need Jekyll processing

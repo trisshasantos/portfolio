@@ -1,0 +1,162 @@
+<!-- Contact Hero Section -->
+<section class="contact-hero section medical-pattern gradient-bg">
+  <div class="container">
+    <div class="hero-content animate-fadeInUp">
+      <h1>Get In Touch</h1>
+      <p class="hero-description">
+        Ready to collaborate on improving patient outcomes? Let's discuss how my pharmaceutical expertise 
+        can contribute to your healthcare team, research project, or clinical initiative.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- Contact Information Section -->
+<section class="contact-info section">
+  <div class="container">
+    <div class="contact-grid">
+      <div class="contact-details animate-fadeInUp">
+        <h2>Contact Information</h2>
+        <div class="contact-item">
+          <div class="contact-icon">👤</div>
+          <div class="contact-content">
+            <h3>Name</h3>
+            <p>Trisha Mae Esguerra Santos, RPh</p>
+          </div>
+        </div>
+        
+        <div class="contact-item">
+          <div class="contact-icon">📧</div>
+          <div class="contact-content">
+            <h3>Email</h3>
+            <p>trisshasantos@gmail.com</p>
+            <a href="mailto:trisshasantos@gmail.com" class="contact-link">Send Email</a>
+          </div>
+        </div>
+        
+        <div class="contact-item">
+          <div class="contact-icon">📱</div>
+          <div class="contact-content">
+            <h3>Mobile</h3>
+            <p>+63 930 108 2793</p>
+            <a href="tel:+639301082793" class="contact-link">Call Now</a>
+          </div>
+        </div>
+        
+        <div class="contact-item">
+          <div class="contact-icon">📍</div>
+          <div class="contact-content">
+            <h3>Location</h3>
+            <p>Antipolo City, Rizal, Philippines<br>Available for remote consultations</p>
+          </div>
+        </div>
+        
+        <div class="contact-item">
+          <div class="contact-icon">💼</div>
+          <div class="contact-content">
+            <h3>LinkedIn</h3>
+            <p>Connect with me professionally</p>
+            <a href="https://www.linkedin.com/in/trisha-mae-santos-19b6b3225/" target="_blank" class="contact-link">View Profile</a>
+          </div>
+        </div>
+      </div>
+      
+      <div class="contact-form-container card animate-fadeInUp">
+        <h2>Send a Message</h2>
+        <!-- Formspree integration with Angular -->
+        <form class="contact-form" (submit)="onSubmit($event)">
+          <div class="form-group">
+            <label for="name">Full Name *</label>
+            <input type="text" id="name" name="name" required placeholder="Your full name" />
+          </div>
+
+          <div class="form-group">
+            <label for="email">Email Address *</label>
+            <input type="email" id="email" name="email" required placeholder="your.email@example.com" />
+          </div>
+
+          <div class="form-group">
+            <label for="phone">Phone Number</label>
+            <input type="tel" id="phone" name="phone" placeholder="(555) 123-4567" />
+          </div>
+
+          <div class="form-group">
+            <label for="organization">Organization</label>
+            <input type="text" id="organization" name="organization" placeholder="Hospital, Clinic, or Company Name" />
+          </div>
+
+          <div class="form-group">
+            <label for="subject">Subject *</label>
+            <select id="subject" name="subject" required>
+              <option value="">Select a subject</option>
+              <option value="job-opportunity">Job Opportunity</option>
+              <option value="consulting">Consulting Services</option>
+              <option value="collaboration">Research Collaboration</option>
+              <option value="speaking">Speaking Engagement</option>
+              <option value="mentorship">Mentorship</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="message">Message *</label>
+            <textarea id="message" name="message" rows="6" required placeholder="Please describe how I can help you or your organization..."></textarea>
+          </div>
+
+          <!-- Honeypot field for spam protection -->
+          <input type="text" name="_gotcha" style="display:none" />
+
+          <button type="submit" class="btn btn-primary submit-btn" [disabled]="isSubmitting">
+            {{ isSubmitting ? 'Sending...' : 'Send Message' }}
+          </button>
+
+          <!-- Status Messages -->
+          <div class="form-status" *ngIf="statusMessage">
+            <div class="form-success" *ngIf="statusType === 'success'">
+              <div class="success-icon">✅</div>
+              <p>{{ statusMessage }}</p>
+            </div>
+            <div class="form-error" *ngIf="statusType === 'error'">
+              <div class="error-icon">❌</div>
+              <p>{{ statusMessage }}</p>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Professional Availability Section -->
+<section class="availability section">
+  <div class="container">
+    <div class="availability-content animate-fadeInUp">
+      <h2>Professional Availability</h2>
+      <div class="availability-grid">
+        <div class="availability-item">
+          <div class="availability-icon">💼</div>
+          <h3>Consulting Services</h3>
+          <p>Available for pharmaceutical consulting, medication reviews, and clinical advisory services.</p>
+        </div>
+        
+        <div class="availability-item">
+          <div class="availability-icon">🎤</div>
+          <h3>Speaking Engagements</h3>
+          <p>Open to presenting at conferences, seminars, and educational events on pharmaceutical topics.</p>
+        </div>
+        
+        <div class="availability-item">
+          <div class="availability-icon">👩‍🎓</div>
+          <h3>Mentorship</h3>
+          <p>Interested in mentoring pharmacy students and new graduates entering clinical practice.</p>
+        </div>
+        
+        <div class="availability-item">
+          <div class="availability-icon">🔬</div>
+          <h3>Research Collaboration</h3>
+          <p>Seeking opportunities to collaborate on clinical research projects and quality improvement initiatives.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
