@@ -356,6 +356,22 @@
 }
 
 // Dynamic CSS Custom Properties for Each Percentage
+.circular-progress[data-percentage="97"] .progress-circle {
+  background: conic-gradient(
+    var(--primary-blue) 0deg,
+    var(--medical-green) 349deg,
+    var(--bg-light) 349deg
+  );
+}
+
+.circular-progress[data-percentage="96"] .progress-circle {
+  background: conic-gradient(
+    var(--primary-blue) 0deg,
+    var(--medical-green) 346deg,
+    var(--bg-light) 346deg
+  );
+}
+
 .circular-progress[data-percentage="95"] .progress-circle {
   background: conic-gradient(
     var(--primary-blue) 0deg,
@@ -364,11 +380,35 @@
   );
 }
 
+.circular-progress[data-percentage="94"] .progress-circle {
+  background: conic-gradient(
+    var(--primary-blue) 0deg,
+    var(--medical-green) 338deg,
+    var(--bg-light) 338deg
+  );
+}
+
+.circular-progress[data-percentage="93"] .progress-circle {
+  background: conic-gradient(
+    var(--primary-blue) 0deg,
+    var(--medical-green) 335deg,
+    var(--bg-light) 335deg
+  );
+}
+
 .circular-progress[data-percentage="92"] .progress-circle {
   background: conic-gradient(
     var(--primary-blue) 0deg,
     var(--medical-green) 331deg,
     var(--bg-light) 331deg
+  );
+}
+
+.circular-progress[data-percentage="91"] .progress-circle {
+  background: conic-gradient(
+    var(--primary-blue) 0deg,
+    var(--medical-green) 328deg,
+    var(--bg-light) 328deg
   );
 }
 
