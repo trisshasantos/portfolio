@@ -398,38 +398,85 @@
   }
 }
 
-// Mobile Responsive
-@media (max-width: 768px) {
+// Tablet Responsive
+@media (max-width: 1024px) {
   .hero-content {
-    grid-template-columns: 1fr;
     gap: 3rem;
-    text-align: center;
   }
   
   .hero-text {
     .hero-title {
-      font-size: 2.5rem;
-    }
-    
-    .hero-profession {
-      font-size: 1.25rem;
+      font-size: 3rem;
     }
     
     .hero-description {
       font-size: 1.1rem;
     }
+  }
+  
+  .hero-image .profile-image-container {
+    width: 300px;
+    height: 300px;
+  }
+  
+  .stats-grid,
+  .services-grid,
+  .expertise-grid {
+    gap: 2rem;
+  }
+}
+
+// Mobile Responsive
+@media (max-width: 768px) {
+  .hero {
+    min-height: 90vh;
+    padding: 2rem 0;
+  }
+  
+  .hero-content {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+    text-align: center;
+  }
+  
+  .hero-text {
+    order: 2;
+    
+    .hero-subtitle {
+      font-size: 1rem;
+    }
+    
+    .hero-title {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+    
+    .hero-profession {
+      font-size: 1.25rem;
+      margin-bottom: 1rem;
+    }
+    
+    .hero-description {
+      font-size: 1rem;
+      margin-bottom: 2rem;
+    }
     
     .hero-buttons {
       justify-content: center;
+      flex-wrap: wrap;
+      gap: 1rem;
       
       .btn {
         padding: 0.875rem 1.5rem;
-        font-size: 1rem;
+        font-size: 0.95rem;
+        min-width: 140px;
       }
     }
   }
   
   .hero-image {
+    order: 1;
+    
     .profile-image-container {
       width: 280px;
       height: 280px;
@@ -446,39 +493,67 @@
   }
   
   .services-grid,
-  .expertise-grid {
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
-  }
-  
-  .strengths-grid {
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
-  }
-  
+  .expertise-grid,
+  .strengths-grid,
   .competencies-grid {
     grid-template-columns: 1fr;
     gap: 1.5rem;
   }
   
   .section-header {
+    margin-bottom: 2.5rem;
+    
     h2 {
       font-size: 2rem;
+      margin-bottom: 1rem;
     }
     
     p {
-      font-size: 1.1rem;
+      font-size: 1rem;
     }
   }
 }
 
 @media (max-width: 480px) {
-  .stats-grid {
-    grid-template-columns: 1fr;
+  .hero {
+    min-height: 85vh;
+    padding: 1.5rem 0;
   }
   
-  .hero-text .hero-title {
-    font-size: 2rem;
+  .hero-content {
+    gap: 2rem;
+  }
+  
+  .hero-text {
+    .hero-subtitle {
+      font-size: 0.9rem;
+    }
+    
+    .hero-title {
+      font-size: 2rem;
+      line-height: 1.1;
+    }
+    
+    .hero-profession {
+      font-size: 1.1rem;
+    }
+    
+    .hero-description {
+      font-size: 0.95rem;
+      margin-bottom: 1.5rem;
+    }
+    
+    .hero-buttons {
+      flex-direction: column;
+      align-items: center;
+      
+      .btn {
+        width: 100%;
+        max-width: 200px;
+        padding: 0.75rem 1rem;
+        font-size: 0.9rem;
+      }
+    }
   }
   
   .hero-image .profile-image-container {
@@ -490,7 +565,39 @@
     }
   }
   
-  .stat-card .stat-number {
-    font-size: 2.5rem;
+  .stats-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  .stat-card {
+    padding: 1.5rem;
+    
+    .stat-number {
+      font-size: 2.5rem;
+    }
+    
+    .stat-label {
+      font-size: 0.9rem;
+    }
+  }
+  
+  .service-card,
+  .expertise-card,
+  .strength-card,
+  .competency-card {
+    padding: 1.5rem;
+  }
+  
+  .section-header {
+    margin-bottom: 2rem;
+    
+    h2 {
+      font-size: 1.75rem;
+    }
+    
+    p {
+      font-size: 0.95rem;
+    }
   }
 }
