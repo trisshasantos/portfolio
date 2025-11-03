@@ -1,0 +1,27 @@
+<header class="header">
+  <nav class="navbar container">
+    <div class="nav-brand">
+      <a routerLink="/" class="logo">
+        <div class="logo-icon">⚕️</div>
+        <div class="logo-text">
+          <span class="name">Trisha Mae E. Santos</span>
+          <span class="title">RPh</span>
+        </div>
+      </a>
+    </div>
+    
+    <div class="nav-menu" [class.active]="isMenuOpen">
+      <a routerLink="/" class="nav-link" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Home</a>
+      <a routerLink="/about" class="nav-link" routerLinkActive="active">About</a>
+      <a routerLink="/skills" class="nav-link" routerLinkActive="active">Skills</a>
+      <a routerLink="/contact" class="nav-link" routerLinkActive="active">Contact</a>
+      <a href="https://drive.google.com/file/d/11Ag_0PWIt3FbijJWcv-wUg6XnQTv2PR4/view?usp=sharing" class="nav-link resume-link" target="_blank">Resume</a>
+    </div>
+    
+    <div class="nav-toggle" (click)="toggleMenu()">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </div>
+  </nav>
+</header>
