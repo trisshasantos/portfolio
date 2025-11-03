@@ -7,7 +7,7 @@
   backdrop-filter: blur(10px);
   z-index: 1000;
   border-bottom: 1px solid transparent;
-  transition: all 0.3s ease;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   transform: translateY(0);
   
   // Scrolled state - more opaque background
@@ -17,9 +17,15 @@
     box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
   }
   
-  // Hidden state - slide up
+  // Hidden state - slide up completely
   &.hidden {
     transform: translateY(-100%);
+    box-shadow: none;
+  }
+  
+  // Ensure header is always visible when menu is open on mobile
+  &.menu-open {
+    transform: translateY(0) !important;
   }
 }
 

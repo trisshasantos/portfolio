@@ -14,6 +14,7 @@ export class Header implements OnInit {
   lastScrollTop = 0;
   isHeaderVisible = true;
   private isBrowser: boolean;
+  private ticking = false;
 
   constructor(@Inject(PLATFORM_ID) private platformId: Object) {
     this.isBrowser = isPlatformBrowser(this.platformId);
@@ -28,8 +29,12 @@ export class Header implements OnInit {
 
   @HostListener('window:scroll', [])
   onWindowScroll() {
-    if (this.isBrowser) {
-      this.checkScroll();
+    if (this.isBrowser && !this.ticking) {
+      requestAnimationFrame(() => {
+        this.checkScroll();
+        this.ticking = false;
+      });
+      this.ticking = true;
     }
   }
 
@@ -43,16 +48,26 @@ export class Header implements OnInit {
     // Header background change on scroll
     this.isScrolled = scrollTop > 50;
     
-    // Auto-hide header logic
-    if (scrollTop > this.lastScrollTop && scrollTop > 100) {
-      // Scrolling down - hide header
-      this.isHeaderVisible = false;
-    } else {
-      // Scrolling up - show header
+    // Auto-hide header logic - more aggressive
+    const scrollDifference = Math.abs(scrollTop - this.lastScrollTop);
+    
+    // Only trigger on significant scroll movement (minimum 5px)
+    if (scrollDifference > 5) {
+      if (scrollTop > this.lastScrollTop && scrollTop > 80) {
+        // Scrolling down - hide header (after 80px scroll)
+        this.isHeaderVisible = false;
+      } else if (scrollTop < this.lastScrollTop) {
+        // Scrolling up - show header immediately
+        this.isHeaderVisible = true;
+      }
+    }
+    
+    // Always show header at the very top
+    if (scrollTop <= 10) {
       this.isHeaderVisible = true;
     }
     
-    this.lastScrollTop = scrollTop;
+    this.lastScrollTop = scrollTop <= 0 ? 0 : scrollTop; // For Mobile or negative scrolling
   }
 
   toggleMenu() {
