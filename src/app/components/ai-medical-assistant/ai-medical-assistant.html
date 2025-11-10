@@ -1,0 +1,112 @@
+<!-- AI Medical Assistant Section -->
+<section class="ai-medical-assistant section">
+  <div class="container">
+    <div class="ai-header animate-fadeInUp">
+      <div class="ai-icon-container">
+        <div class="ai-icon">🤖</div>
+        <div class="ai-pulse"></div>
+      </div>
+      <h2>AI-Powered Medical Assistant</h2>
+      <p class="ai-description">
+        Ask pharmaceutical questions and get evidence-based answers powered by AI technology.
+        Perfect for medication queries, drug interactions, and clinical guidance.
+      </p>
+    </div>
+
+    <div class="ai-interface animate-fadeInUp">
+      <div class="chat-container">
+        <!-- Chat Messages -->
+        <div class="chat-messages" #chatMessagesContainer>
+          <div class="welcome-message">
+            <div class="ai-avatar">🩺</div>
+            <div class="message-content">
+              <p>Hello! I'm your AI Medical Assistant. I can help you with:</p>
+              <ul>
+                <li>🔍 Drug information and interactions</li>
+                <li>💊 Medication dosing guidelines</li>
+                <li>⚕️ Clinical pharmacy questions</li>
+                <li>📚 Evidence-based pharmaceutical guidance</li>
+              </ul>
+              <p>Ask me anything related to pharmacy and medicine!</p>
+            </div>
+          </div>
+
+          <!-- Dynamic Chat Messages -->
+          <div *ngFor="let message of chatMessages; trackBy: trackByFn" 
+               class="chat-message" 
+               [ngClass]="{'user-message': message.type === 'user', 'ai-message': message.type === 'ai'}">
+            <div class="message-avatar">
+              <span *ngIf="message.type === 'user'">👤</span>
+              <span *ngIf="message.type === 'ai'">🤖</span>
+            </div>
+            <div class="message-content">
+              <div class="message-text" [innerHTML]="message.content"></div>
+              <div class="message-time">{{ message.timestamp | date:'short' }}</div>
+            </div>
+          </div>
+
+          <!-- Loading Message -->
+          <div *ngIf="isLoading" class="chat-message ai-message loading">
+            <div class="message-avatar">
+              <span>🤖</span>
+            </div>
+            <div class="message-content">
+              <div class="typing-indicator">
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+              <div class="message-text">Analyzing your question...</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Input Form -->
+        <form class="chat-input-form" (ngSubmit)="sendMessage()" [formGroup]="messageForm">
+          <div class="input-container">
+            <input 
+              type="text" 
+              formControlName="message"
+              placeholder="Ask a medical or pharmacy question..."
+              class="chat-input">
+            <button 
+              type="submit" 
+              class="send-button"
+              [disabled]="isLoading || messageForm.invalid">
+              <span *ngIf="!isLoading" class="send-icon">📤</span>
+              <span *ngIf="isLoading" class="loading-spinner">⏳</span>
+            </button>
+          </div>
+          <div class="input-help">
+            <p>💡 Try asking: "What are the side effects of metformin?" or "Drug interactions with warfarin"</p>
+          </div>
+        </form>
+      </div>
+
+      <!-- Quick Questions -->
+      <div class="quick-questions">
+        <h3>Quick Questions</h3>
+        <div class="question-buttons">
+          <button *ngFor="let question of quickQuestions" 
+                  class="quick-question-btn"
+                  (click)="askQuickQuestion(question)"
+                  [class.disabled]="isLoading">
+            {{ question.title }}
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Disclaimer -->
+    <div class="ai-disclaimer animate-fadeInUp">
+      <div class="disclaimer-icon">⚠️</div>
+      <div class="disclaimer-content">
+        <h4>Professional Disclaimer</h4>
+        <p>
+          This AI assistant provides general pharmaceutical information for educational purposes only. 
+          Always consult with healthcare professionals for specific medical advice, diagnosis, or treatment decisions.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
