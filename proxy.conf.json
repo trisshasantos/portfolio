@@ -1,6 +1,6 @@
 {
   "/api/*": {
-    "target": "https://epic-backend-qt7w2jqhj-beingmartinbmcs-projects.vercel.app",
+    "target": "https://epic-backend-4syrirugh-beingmartinbmcs-projects.vercel.app",
     "secure": true,
     "changeOrigin": true,
     "logLevel": "debug",
