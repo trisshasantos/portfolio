@@ -75,7 +75,7 @@ export class AiMedicalAssistantComponent implements OnInit, AfterViewChecked {
 
     if (isProduction) {
       // In production, try direct API call first
-      return 'https://epic-backend-4syrirugh-beingmartinbmcs-projects.vercel.app/api/generic';
+      return 'https://epic-backend-3n9kp4iyq-beingmartinbmcs-projects.vercel.app/api/generic';
     } else {
       // Use local proxy for development
       return '/api/generic';
