@@ -67,9 +67,19 @@ export class AiMedicalAssistantComponent implements OnInit, AfterViewChecked {
     });
     
     // Set API URL based on environment
-    this.apiUrl = this.isProduction() 
-      ? 'https://epic-backend-qt7w2jqhj-beingmartinbmcs-projects.vercel.app/api/generic'
-      : '/api/generic';
+    this.apiUrl = this.getApiUrl();
+  }
+
+  private getApiUrl(): string {
+    const isProduction = window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1';
+    
+    if (isProduction) {
+      // In production, try direct API call first
+      return 'https://epic-backend-qt7w2jqhj-beingmartinbmcs-projects.vercel.app/api/generic';
+    } else {
+      // Use local proxy for development
+      return '/api/generic';
+    }
   }
 
   private isProduction(): boolean {
@@ -108,7 +118,16 @@ export class AiMedicalAssistantComponent implements OnInit, AfterViewChecked {
       this.addMessage('ai', response);
     } catch (error) {
       console.error('Error calling AI API:', error);
-      this.addMessage('ai', 'I apologize, but I\'m experiencing technical difficulties. Please try again later or consult with a healthcare professional for immediate assistance.');
+      let errorMessage = 'I apologize, but I\'m experiencing technical difficulties. ';
+      
+      // Check if it's a CORS error
+      if (error instanceof TypeError && error.message.includes('CORS')) {
+        errorMessage += 'This appears to be a network connectivity issue. ';
+      }
+      
+      errorMessage += 'Please try again later or consult with a healthcare professional for immediate assistance.';
+      
+      this.addMessage('ai', errorMessage);
     } finally {
       this.isLoading = false;
       // Re-enable form after loading
@@ -130,7 +149,16 @@ export class AiMedicalAssistantComponent implements OnInit, AfterViewChecked {
       this.addMessage('ai', response);
     } catch (error) {
       console.error('Error calling AI API:', error);
-      this.addMessage('ai', 'I apologize, but I\'m experiencing technical difficulties. Please try again later.');
+      let errorMessage = 'I apologize, but I\'m experiencing technical difficulties. ';
+      
+      // Check if it's a CORS error
+      if (error instanceof TypeError && error.message.includes('CORS')) {
+        errorMessage += 'This appears to be a network connectivity issue. ';
+      }
+      
+      errorMessage += 'Please try again later or consult with a healthcare professional for immediate assistance.';
+      
+      this.addMessage('ai', errorMessage);
     } finally {
       this.isLoading = false;
       // Re-enable form after loading
