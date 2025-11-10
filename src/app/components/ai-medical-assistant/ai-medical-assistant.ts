@@ -65,17 +65,17 @@ export class AiMedicalAssistantComponent implements OnInit, AfterViewChecked {
     this.messageForm = this.fb.group({
       message: [{value: '', disabled: false}, [Validators.required, Validators.minLength(3)]]
     });
-    
+
     // Set API URL based on environment
     this.apiUrl = this.getApiUrl();
   }
 
   private getApiUrl(): string {
     const isProduction = window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1';
-    
+
     if (isProduction) {
       // In production, try direct API call first
-      return 'https://epic-backend-qt7w2jqhj-beingmartinbmcs-projects.vercel.app/api/generic';
+      return 'https://epic-backend-4syrirugh-beingmartinbmcs-projects.vercel.app/api/generic';
     } else {
       // Use local proxy for development
       return '/api/generic';
@@ -119,14 +119,14 @@ export class AiMedicalAssistantComponent implements OnInit, AfterViewChecked {
     } catch (error) {
       console.error('Error calling AI API:', error);
       let errorMessage = 'I apologize, but I\'m experiencing technical difficulties. ';
-      
+
       // Check if it's a CORS error
       if (error instanceof TypeError && error.message.includes('CORS')) {
         errorMessage += 'This appears to be a network connectivity issue. ';
       }
-      
+
       errorMessage += 'Please try again later or consult with a healthcare professional for immediate assistance.';
-      
+
       this.addMessage('ai', errorMessage);
     } finally {
       this.isLoading = false;
@@ -150,14 +150,14 @@ export class AiMedicalAssistantComponent implements OnInit, AfterViewChecked {
     } catch (error) {
       console.error('Error calling AI API:', error);
       let errorMessage = 'I apologize, but I\'m experiencing technical difficulties. ';
-      
+
       // Check if it's a CORS error
       if (error instanceof TypeError && error.message.includes('CORS')) {
         errorMessage += 'This appears to be a network connectivity issue. ';
       }
-      
+
       errorMessage += 'Please try again later or consult with a healthcare professional for immediate assistance.';
-      
+
       this.addMessage('ai', errorMessage);
     } finally {
       this.isLoading = false;
@@ -167,8 +167,8 @@ export class AiMedicalAssistantComponent implements OnInit, AfterViewChecked {
   }
 
   private async callAIAPI(prompt: string): Promise<string> {
-    const context = `You are an AI medical assistant helping a registered pharmacist (RPh) with pharmaceutical and clinical questions. 
-    Provide evidence-based, accurate information about medications, drug interactions, clinical pharmacy practices, and healthcare guidance. 
+    const context = `You are an AI medical assistant helping a registered pharmacist (RPh) with pharmaceutical and clinical questions.
+    Provide evidence-based, accurate information about medications, drug interactions, clinical pharmacy practices, and healthcare guidance.
     Always remind users to consult healthcare professionals for specific medical decisions. Keep responses professional, informative, and well-structured.
     Focus on scientific evidence, clinical data, and established medical practices. Maintain a professional, secular tone appropriate for healthcare settings.
     Do not include religious references, spiritual content, or biblical quotes in your responses.`;
