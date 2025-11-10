@@ -129,6 +129,27 @@
         box-shadow: 0 4px 15px rgba(0, 168, 107, 0.4);
       }
     }
+    
+    .nav-link:has(.ai-link) {
+      color: #1e40af;
+      font-weight: 600;
+      
+      &:hover {
+        color: #0891b2;
+      }
+      
+      &.active {
+        color: #0891b2;
+      }
+      
+      .ai-link {
+        color: inherit;
+        background: none;
+        -webkit-background-clip: unset;
+        -webkit-text-fill-color: unset;
+        background-clip: unset;
+      }
+    }
   }
 }
 

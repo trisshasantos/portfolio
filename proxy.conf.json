@@ -1,0 +1,13 @@
+{
+  "/api/*": {
+    "target": "https://epic-backend-qt7w2jqhj-beingmartinbmcs-projects.vercel.app",
+    "secure": true,
+    "changeOrigin": true,
+    "logLevel": "debug",
+    "followRedirects": true,
+    "headers": {
+      "Accept": "application/json",
+      "Content-Type": "application/json"
+    }
+  }
+}
