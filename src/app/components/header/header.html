@@ -1,30 +1,50 @@
-<header class="header" [class.scrolled]="isScrolled" [class.hidden]="!isHeaderVisible" [class.menu-open]="isMenuOpen">
-  <nav class="navbar container">
-    <div class="nav-brand">
-      <a routerLink="/" class="logo">
-        <div class="logo-icon">⚕️</div>
-        <div class="logo-text">
-          <span class="name">Trisha Mae E. Santos</span>
-          <span class="title">RPh</span>
-        </div>
+<header class="site-header"
+        [class.scrolled]="isScrolled"
+        [class.hidden]="!isHeaderVisible"
+        [class.menu-open]="isMenuOpen">
+  <nav class="navbar container" aria-label="Primary">
+    <a routerLink="/" class="brand" (click)="closeMenu()">
+      <span class="brand-mark">
+        <span class="rx">℞</span>
+      </span>
+      <span class="brand-text">
+        <span class="brand-name">Trisha Mae E. Santos</span>
+        <span class="brand-tags">
+          <span class="brand-tag clinical">RPh</span>
+          <span class="brand-dot"></span>
+          <span class="brand-tag editor">Medical Editor</span>
+        </span>
+      </span>
+    </a>
+
+    <div class="nav-menu" [class.active]="isMenuOpen" id="primary-menu">
+      <a routerLink="/"           class="nav-link" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" (click)="closeMenu()">Home</a>
+      <a routerLink="/about"      class="nav-link" routerLinkActive="active" (click)="closeMenu()">About</a>
+      <a routerLink="/skills"     class="nav-link" routerLinkActive="active" (click)="closeMenu()">Skills</a>
+      <a routerLink="/ai-assistant" class="nav-link nav-link--ai" routerLinkActive="active" (click)="closeMenu()">
+        <span class="ai-dot"></span>
+        AI Assistant
+      </a>
+      <a routerLink="/contact"    class="nav-link" routerLinkActive="active" (click)="closeMenu()">Contact</a>
+      <a href="https://drive.google.com/file/d/11Ag_0PWIt3FbijJWcv-wUg6XnQTv2PR4/view?usp=sharing"
+         class="nav-cta"
+         target="_blank"
+         rel="noopener"
+         (click)="closeMenu()">
+        Resume
+        <span aria-hidden="true">↗</span>
       </a>
     </div>
-    
-    <div class="nav-menu" [class.active]="isMenuOpen">
-      <a routerLink="/" class="nav-link" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" (click)="closeMenu()">Home</a>
-      <a routerLink="/about" class="nav-link" routerLinkActive="active" (click)="closeMenu()">About</a>
-      <a routerLink="/skills" class="nav-link" routerLinkActive="active" (click)="closeMenu()">Skills</a>
-      <a routerLink="/ai-assistant" class="nav-link" routerLinkActive="active" (click)="closeMenu()">
-        <span class="ai-link">🤖 AI Assistant</span>
-      </a>
-      <a routerLink="/contact" class="nav-link" routerLinkActive="active" (click)="closeMenu()">Contact</a>
-      <a href="https://drive.google.com/file/d/11Ag_0PWIt3FbijJWcv-wUg6XnQTv2PR4/view?usp=sharing" class="nav-link resume-link" target="_blank" (click)="closeMenu()">Resume</a>
-    </div>
-    
-    <div class="nav-toggle" [class.active]="isMenuOpen" (click)="toggleMenu()">
+
+    <button class="nav-toggle"
+            [class.active]="isMenuOpen"
+            (click)="toggleMenu()"
+            aria-label="Toggle navigation"
+            aria-controls="primary-menu"
+            [attr.aria-expanded]="isMenuOpen">
       <span class="bar"></span>
       <span class="bar"></span>
       <span class="bar"></span>
-    </div>
+    </button>
   </nav>
 </header>

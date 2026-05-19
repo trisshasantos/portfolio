@@ -74,11 +74,9 @@ export class AiMedicalAssistantComponent implements OnInit, AfterViewChecked {
     const isProduction = window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1';
 
     if (isProduction) {
-      // In production, try direct API call first
-      return 'https://epic-backend-62lr1dfmi-beingmartinbmcs-projects.vercel.app/api/generic';
+      return 'https://ai-gateway-production-0388.up.railway.app/api/v1/openai-proxy';
     } else {
-      // Use local proxy for development
-      return '/api/generic';
+      return '/api/v1/openai-proxy';
     }
   }
 
@@ -167,27 +165,33 @@ export class AiMedicalAssistantComponent implements OnInit, AfterViewChecked {
   }
 
   private async callAIAPI(prompt: string): Promise<string> {
-    const context = `You are an AI medical assistant helping a registered pharmacist (RPh) with pharmaceutical and clinical questions.
-    Provide evidence-based, accurate information about medications, drug interactions, clinical pharmacy practices, and healthcare guidance.
-    Always remind users to consult healthcare professionals for specific medical decisions. Keep responses professional, informative, and well-structured.
-    Focus on scientific evidence, clinical data, and established medical practices. Maintain a professional, secular tone appropriate for healthcare settings.
-    Do not include religious references, spiritual content, or biblical quotes in your responses.`;
+    const systemPrompt = `You are an AI medical assistant helping a registered pharmacist (RPh) with pharmaceutical and clinical questions.
+Provide evidence-based, accurate information about medications, drug interactions, clinical pharmacy practices, and healthcare guidance.
+Always remind users to consult healthcare professionals for specific medical decisions. Keep responses professional, informative, and well-structured.
+Focus on scientific evidence, clinical data, and established medical practices. Maintain a professional, secular tone appropriate for healthcare settings.
+Do not include religious references, spiritual content, or biblical quotes in your responses.`;
 
     const requestBody = {
-      prompt: prompt,
-      context: context
+      model: 'gpt-4o-mini',
+      messages: [
+        { role: 'system', content: systemPrompt },
+        { role: 'user', content: prompt }
+      ],
+      temperature: 0.4,
+      max_tokens: 800
     };
 
     try {
-      const response = await this.http.post<any>(this.apiUrl, requestBody, {
+      const response = await this.http.post<any>(`${this.apiUrl}/chat/completions`, requestBody, {
         headers: {
           'accept': 'application/json',
           'content-type': 'application/json'
         }
       }).toPromise();
 
-      // Parse the response based on the actual API structure
-      if (response?.data?.choices?.[0]?.message?.content) {
+      if (response?.choices?.[0]?.message?.content) {
+        return response.choices[0].message.content;
+      } else if (response?.data?.choices?.[0]?.message?.content) {
         return response.data.choices[0].message.content;
       } else if (response?.response) {
         return response.response;
@@ -197,7 +201,7 @@ export class AiMedicalAssistantComponent implements OnInit, AfterViewChecked {
         return typeof response.data === 'string' ? response.data : JSON.stringify(response.data);
       } else {
         console.warn('Unexpected API response structure:', response);
-        return 'I received your question but couldn\'t generate a proper response. Please try rephrasing your question.';
+        return 'I received your question but could not generate a proper response. Please try rephrasing your question.';
       }
     } catch (error) {
       console.error('API Error:', error);

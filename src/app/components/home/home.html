@@ -1,27 +1,87 @@
-<!-- Hero Section -->
-<section class="hero gradient-bg medical-pattern">
+<!-- ============== Hero ============== -->
+<section class="hero medical-pattern">
+  <div class="hero-blob hero-blob-1" aria-hidden="true"></div>
+  <div class="hero-blob hero-blob-2" aria-hidden="true"></div>
+
   <div class="container">
-    <div class="hero-content animate-fadeInUp">
-      <div class="hero-text">
-        <p class="hero-subtitle">Dedicated Healthcare Professional</p>
-        <h1 class="hero-title">Trisha Mae Esguerra Santos, RPh</h1>
-        <h2 class="hero-profession">(Registered Pharmacist)</h2>
-        <p class="hero-description">
-          Passionate about improving patient outcomes through evidence-based medication therapy, accurate drug information, and patient-centered care. With experience in both clinical pharmacy and medical editing, I bridge the gap between healthcare practice and clear, reliable pharmaceutical communication. Committed to delivering safe medication management, high-quality clinical documentation, and compassionate service.
+    <div class="hero-grid">
+      <div class="hero-text animate-fadeInUp">
+        <span class="eyebrow">Pharmacist · Medical Editor · Patient Advocate</span>
+
+        <h1 class="hero-title">
+          Clinical precision meets
+          <span class="text-gradient-amber"> editorial elegance.</span>
+        </h1>
+
+        <p class="hero-name">
+          <span class="script-accent">— I'm</span>
+          <strong>Trisha Mae Esguerra Santos, RPh</strong>
         </p>
-        <div class="hero-buttons">
-          <a routerLink="/about" class="btn btn-primary">Learn More About Me</a>
-          <a routerLink="/contact" class="btn btn-secondary">Get In Touch</a>
+
+        <p class="hero-description">
+          A Registered Pharmacist and Medical Editor with <strong>7+ years</strong> across ICU/CCU clinical pharmacy and pharmaceutical publishing. I bridge bedside care and the printed page — turning complex drug data into safe therapy and reliable, reader-friendly content.
+        </p>
+
+        <div class="hero-actions">
+          <a routerLink="/about" class="btn btn-primary">Discover My Story</a>
+          <a routerLink="/contact" class="btn btn-secondary">Let's Connect</a>
         </div>
+
+        <ul class="hero-pills" aria-label="Practice areas">
+          <li class="hero-pill"><span>℞</span> Medication Therapy</li>
+          <li class="hero-pill"><span>♥</span> ICU / CCU</li>
+          <li class="hero-pill"><span>✎</span> Drug Monographs</li>
+          <li class="hero-pill"><span>⚙</span> Antimicrobial Stewardship</li>
+        </ul>
       </div>
-      <div class="hero-image">
-        <div class="profile-image-container">
-          <img src="images/profile.png" alt="Trisha Mae Esguerra Santos, RPh" class="profile-image" />
-          <div class="floating-pills">
-            <span class="pill pill-1">💊</span>
-            <span class="pill pill-2">💉</span>
-            <span class="pill pill-3">🧬</span>
-            <span class="pill pill-4">🔬</span>
+
+      <div class="hero-visual animate-fadeInUp">
+        <div class="visual-stack">
+          <div class="visual-card visual-card--profile">
+            <div class="profile-frame">
+              <img src="images/profile.png" alt="Portrait of Trisha Mae Esguerra Santos" />
+              <div class="profile-overlay"></div>
+            </div>
+            <div class="profile-badge">
+              <span class="badge-dot"></span>
+              Available for collaboration
+            </div>
+          </div>
+
+          <div class="visual-card visual-card--rx glass">
+            <div class="rx-row">
+              <span class="rx-logo">℞</span>
+              <div>
+                <div class="rx-title">Credentials</div>
+                <div class="rx-meta">RPh · Clinical · Editorial</div>
+              </div>
+            </div>
+            <ul class="rx-creds">
+              <li><span class="rx-check">✓</span> PRC Licensed Pharmacist</li>
+              <li><span class="rx-check">✓</span> 7+ Years Clinical Practice</li>
+              <li><span class="rx-check">✓</span> ICU / CCU Experience</li>
+              <li><span class="rx-check">✓</span> Antimicrobial Stewardship</li>
+            </ul>
+          </div>
+
+          <div class="visual-card visual-card--edit glass">
+            <div class="edit-row">
+              <span class="edit-icon">✎</span>
+              <div class="edit-title">Drug monograph · Draft 3</div>
+            </div>
+            <div class="edit-text">
+              <span class="edit-line"></span>
+              <span class="edit-line edit-line--mid"></span>
+              <span class="edit-line edit-line--short"></span>
+            </div>
+            <div class="edit-foot">Reviewed by <em>T. Santos, RPh</em></div>
+          </div>
+
+          <div class="floating-emojis" aria-hidden="true">
+            <span class="emoji emoji-1">💊</span>
+            <span class="emoji emoji-2">🧬</span>
+            <span class="emoji emoji-3">✒️</span>
+            <span class="emoji emoji-4">📖</span>
           </div>
         </div>
       </div>
@@ -29,156 +89,206 @@
   </div>
 </section>
 
-<!-- Comprehensive Stats Section -->
+<!-- ============== Stats ============== -->
 <section class="stats-section section">
   <div class="container">
-    <div class="stats-grid">
-      <div class="stat-card animate-fadeInUp">
-        <div class="stat-number">6+</div>
-        <div class="stat-label">Years</div>
-        <div class="stat-description">Combined experience in Clinical Pharmacy & Medical Editing</div>
+    <div class="section-header">
+      <span class="eyebrow">By the numbers</span>
+      <h2>Two disciplines. One standard of care.</h2>
+      <p>A balanced track record across the hospital floor and the editor's desk.</p>
+    </div>
+
+    <div class="stats-grid stagger-children">
+      <div class="stat-card">
+        <div class="stat-tag">Experience</div>
+        <div class="stat-number"><span>7</span><i>+</i></div>
+        <div class="stat-label">Years combined</div>
+        <p class="stat-description">In clinical pharmacy and medical editorial practice.</p>
       </div>
-      <div class="stat-card animate-fadeInUp">
-        <div class="stat-number">2000+</div>
-        <div class="stat-label">Patients</div>
-        <div class="stat-description">Monitored, counseled, and managed medication therapy</div>
+
+      <div class="stat-card stat-card--amber">
+        <div class="stat-tag">Patients</div>
+        <div class="stat-number"><span>2,000</span><i>+</i></div>
+        <div class="stat-label">Patients cared for</div>
+        <p class="stat-description">Counseled, monitored, and managed through MTM workflows.</p>
       </div>
-      <div class="stat-card animate-fadeInUp">
-        <div class="stat-number">98%</div>
-        <div class="stat-label">Accuracy / Satisfaction</div>
-        <div class="stat-description">In medication review, drug information validation, and patient feedback</div>
+
+      <div class="stat-card">
+        <div class="stat-tag">Accuracy</div>
+        <div class="stat-number"><span>98</span><i>%</i></div>
+        <div class="stat-label">Validation rate</div>
+        <p class="stat-description">In medication review and drug information validation.</p>
       </div>
-      <div class="stat-card animate-fadeInUp">
-        <div class="stat-number">500+</div>
-        <div class="stat-label">Drug Monographs / Articles Edited</div>
-        <div class="stat-description">Reviewed, written, or quality-checked for publication</div>
+
+      <div class="stat-card stat-card--amber">
+        <div class="stat-tag">Editorial</div>
+        <div class="stat-number"><span>500</span><i>+</i></div>
+        <div class="stat-label">Monographs & articles</div>
+        <p class="stat-description">Authored, edited, or QC'd for publication.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- Clinical & Pharmaceutical Expertise Section -->
-<section class="clinical-expertise section">
+<!-- ============== Clinical Expertise ============== -->
+<section class="expertise-section section">
   <div class="container">
     <div class="section-header">
-      <h2 class="animate-fadeInDown">📌 Clinical & Pharmaceutical Expertise</h2>
-      <p class="animate-fadeIn">Comprehensive clinical pharmacy services with expertise across multiple healthcare settings</p>
+      <span class="eyebrow">℞ Clinical Pharmacy</span>
+      <h2>Care that's <span class="text-gradient">evidence-based</span> and patient-first.</h2>
+      <p>Comprehensive clinical services with depth across acute and critical care settings.</p>
     </div>
-    <div class="expertise-grid">
-      <div class="expertise-card card animate-fadeInUp">
-        <div class="expertise-icon">💊</div>
+
+    <div class="expertise-grid stagger-children">
+      <article class="expertise-card card">
+        <div class="expertise-icon" data-emoji="💊">💊</div>
         <h3>Medication Therapy Management</h3>
-        <p>Patient-specific drug assessment and comprehensive medication reviews to optimize therapeutic outcomes.</p>
-      </div>
-      <div class="expertise-card card animate-fadeInUp">
-        <div class="expertise-icon">⚠️</div>
+        <p>Patient-specific assessment and comprehensive medication reviews that optimize therapeutic outcomes.</p>
+      </article>
+
+      <article class="expertise-card card">
+        <div class="expertise-icon" data-emoji="⚠️">⚠️</div>
         <h3>Drug Safety & Interactions</h3>
-        <p>Expert knowledge of dosage, administration, contraindications, adverse effects, and interaction screening.</p>
-      </div>
-      <div class="expertise-card card animate-fadeInUp">
-        <div class="expertise-icon">🏥</div>
-        <h3>Multi-Unit Clinical Experience</h3>
-        <p>Proven experience across ICU, CCU, Medical-Surgical, and General Units with diverse patient populations.</p>
-      </div>
-      <div class="expertise-card card animate-fadeInUp">
-        <div class="expertise-icon">👥</div>
-        <h3>Healthcare Team Collaboration</h3>
-        <p>Seamless collaboration with doctors, nurses, and respiratory therapists for comprehensive patient care.</p>
-      </div>
-      <div class="expertise-card card animate-fadeInUp">
-        <div class="expertise-icon">🛡️</div>
-        <h3>Stewardship & Safety Programs</h3>
-        <p>Active participation in antimicrobial stewardship and medication safety reporting initiatives.</p>
-      </div>
+        <p>Dosing, contraindications, adverse effects, and rigorous interaction screening at every step.</p>
+      </article>
+
+      <article class="expertise-card card">
+        <div class="expertise-icon" data-emoji="🏥">🏥</div>
+        <h3>ICU / CCU Experience</h3>
+        <p>Proven practice across ICU, CCU, Cardiovascular, Med-Surg, and General Units.</p>
+      </article>
+
+      <article class="expertise-card card">
+        <div class="expertise-icon" data-emoji="👥">👥</div>
+        <h3>Multidisciplinary Care</h3>
+        <p>Seamless collaboration with physicians, nurses, and RTs to deliver coordinated patient care.</p>
+      </article>
+
+      <article class="expertise-card card">
+        <div class="expertise-icon" data-emoji="🛡️">🛡️</div>
+        <h3>Stewardship & Safety</h3>
+        <p>Active engagement in antimicrobial stewardship and medication safety reporting.</p>
+      </article>
+
+      <article class="expertise-card card">
+        <div class="expertise-icon" data-emoji="🚑">🚑</div>
+        <h3>Code Blue Response</h3>
+        <p>Trained Code Blue Team member for cardiac and respiratory emergency response.</p>
+      </article>
     </div>
   </div>
 </section>
 
-<!-- Medical Writing & Editorial Expertise Section -->
-<section class="editorial-expertise section">
+<!-- ============== Editorial Expertise ============== -->
+<section class="expertise-section editorial-section section">
   <div class="container">
     <div class="section-header">
-      <h2 class="animate-fadeInDown">📌 Medical Writing & Editorial Skills</h2>
-      <p class="animate-fadeIn">Expert editorial services ensuring medical accuracy and quality across pharmaceutical publications</p>
+      <span class="eyebrow eyebrow--amber">✎ Medical Editorial</span>
+      <h2>Writing that's <span class="text-gradient-amber">accurate, accessible, and audit-ready.</span></h2>
+      <p>From draft to publication — pharmaceutical communication held to a clinical standard.</p>
     </div>
-    <div class="expertise-grid">
-      <div class="expertise-card card animate-fadeInUp">
-        <div class="expertise-icon">✏️</div>
+
+    <div class="expertise-grid stagger-children">
+      <article class="expertise-card card card--amber">
+        <div class="expertise-icon" data-emoji="✏️">✏️</div>
         <h3>Pharmaceutical Content Editing</h3>
-        <p>Editing, reviewing, and proofreading pharmaceutical product information with meticulous attention to detail.</p>
-      </div>
-      <div class="expertise-card card animate-fadeInUp">
-        <div class="expertise-icon">🎯</div>
+        <p>Meticulous editing, reviewing, and proofreading of pharmaceutical product information.</p>
+      </article>
+
+      <article class="expertise-card card card--amber">
+        <div class="expertise-icon" data-emoji="🎯">🎯</div>
         <h3>Medical Accuracy & Guidelines</h3>
-        <p>Ensuring medical accuracy and consistency following strict editorial guidelines and regulatory standards.</p>
-      </div>
-      <div class="expertise-card card animate-fadeInUp">
-        <div class="expertise-icon">💻</div>
-        <h3>Digital & Print Quality Control</h3>
-        <p>Comprehensive quality control of drug data across both print and digital publishing platforms.</p>
-      </div>
-      <div class="expertise-card card animate-fadeInUp">
-        <div class="expertise-icon">🌐</div>
-        <h3>International Editorial Coordination</h3>
-        <p>Coordinating with pharmaceutical clients and international editorial teams for global publications.</p>
-      </div>
-      <div class="expertise-card card animate-fadeInUp">
-        <div class="expertise-icon">📚</div>
+        <p>Adherence to editorial guidelines and regulatory standards for every line that ships.</p>
+      </article>
+
+      <article class="expertise-card card card--amber">
+        <div class="expertise-icon" data-emoji="💻">💻</div>
+        <h3>Digital & Print QC</h3>
+        <p>Comprehensive quality control across digital and print pharmaceutical publishing.</p>
+      </article>
+
+      <article class="expertise-card card card--amber">
+        <div class="expertise-icon" data-emoji="🌐">🌐</div>
+        <h3>International Coordination</h3>
+        <p>Liaising with pharmaceutical brands and global editorial teams for multi-market releases.</p>
+      </article>
+
+      <article class="expertise-card card card--amber">
+        <div class="expertise-icon" data-emoji="📚">📚</div>
         <h3>Complex Data Transformation</h3>
-        <p>Transforming complex drug data into reader-friendly, accessible content for healthcare professionals.</p>
-      </div>
-      <div class="expertise-card card animate-fadeInUp">
-        <div class="expertise-icon">📋</div>
+        <p>Translating dense drug data into reader-friendly content for healthcare professionals.</p>
+      </article>
+
+      <article class="expertise-card card card--amber">
+        <div class="expertise-icon" data-emoji="📋">📋</div>
         <h3>Drug Monograph Editorial</h3>
-        <p>Creation, evaluation, and updating of comprehensive drug monographs with detailed clinical information.</p>
-      </div>
+        <p>Creation, evaluation, and ongoing updates of comprehensive drug monographs.</p>
+      </article>
     </div>
   </div>
 </section>
 
-<!-- Technical & Professional Competencies Section -->
-<section class="technical-competencies section">
+<!-- ============== Competencies ============== -->
+<section class="competencies-section section">
   <div class="container">
     <div class="section-header">
-      <h2 class="animate-fadeInDown">📌 Technical & Professional Competencies</h2>
-      <p class="animate-fadeIn">Comprehensive skill set supporting both clinical and editorial excellence</p>
+      <span class="eyebrow">Technical & Professional</span>
+      <h2>The toolkit behind the work.</h2>
     </div>
-    <div class="competencies-grid">
-      <div class="competency-category animate-fadeInUp">
-        <h3>🖥️ Technical Skills</h3>
+
+    <div class="competencies-grid stagger-children">
+      <div class="competency-card card">
+        <div class="competency-head">
+          <span class="competency-icon">🖥️</span>
+          <h3>Technical Skills</h3>
+        </div>
         <ul>
-          <li>Microsoft Office Suite (Word, Excel, PowerPoint)</li>
-          <li>Medical documentation and reporting systems</li>
+          <li>Microsoft Office Suite — Word, Excel, PowerPoint</li>
+          <li>Medical documentation & reporting systems</li>
           <li>Digital publishing platforms</li>
         </ul>
       </div>
-      <div class="competency-category animate-fadeInUp">
-        <h3>👥 Professional Skills</h3>
+
+      <div class="competency-card card">
+        <div class="competency-head">
+          <span class="competency-icon">👥</span>
+          <h3>Professional Skills</h3>
+        </div>
         <ul>
-          <li>Team collaboration and leadership</li>
+          <li>Team collaboration & leadership</li>
           <li>Independent task execution</li>
           <li>Deadline-driven project management</li>
         </ul>
       </div>
-      <div class="competency-category animate-fadeInUp">
-        <h3>🎯 Core Competencies</h3>
+
+      <div class="competency-card card">
+        <div class="competency-head">
+          <span class="competency-icon">🎯</span>
+          <h3>Core Competencies</h3>
+        </div>
         <ul>
           <li>Fast learner and adaptable professional</li>
           <li>Excellent English communication (written & oral)</li>
-          <li>Quality assurance and process improvement</li>
+          <li>Quality assurance & process improvement</li>
         </ul>
       </div>
     </div>
   </div>
 </section>
 
-<!-- Call to Action Section -->
-<section class="cta-section gradient-bg">
+<!-- ============== CTA ============== -->
+<section class="cta-section">
   <div class="container">
-    <div class="cta-content animate-fadeInUp">
-      <h2>Ready to Work Together?</h2>
-      <p>Let's discuss how my pharmaceutical expertise can contribute to your healthcare team or research project.</p>
-      <a routerLink="/contact" class="btn btn-success">Contact Me Today</a>
+    <div class="cta-card">
+      <div class="cta-text">
+        <span class="eyebrow">Open to work</span>
+        <h2>Let's build healthier outcomes — together.</h2>
+        <p>From clinical advisory to editorial collaboration, I'd love to hear about your project.</p>
+      </div>
+      <div class="cta-actions">
+        <a routerLink="/contact" class="btn btn-accent">Start a Conversation</a>
+        <a routerLink="/ai-assistant" class="btn btn-ghost">Try the AI Assistant</a>
+      </div>
     </div>
   </div>
 </section>
