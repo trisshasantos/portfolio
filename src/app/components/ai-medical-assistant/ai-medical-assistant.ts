@@ -222,13 +222,78 @@ Do not include religious references, spiritual content, or biblical quotes in yo
   }
 
   private formatMessage(content: string): string {
-    // Basic formatting for better readability
-    return content
-      .replace(/\n/g, '<br>')
-      .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
-      .replace(/\*(.*?)\*/g, '<em>$1</em>')
-      .replace(/- (.*?)(?=\n|$)/g, '<li>$1</li>')
-      .replace(/(<li>.*<\/li>)/gs, '<ul>$1</ul>');
+    const lines = content.replace(/\r\n/g, '\n').split('\n');
+    const out: string[] = [];
+    let listBuf: string[] = [];
+    let paraBuf: string[] = [];
+
+    const flushList = () => {
+      if (listBuf.length) {
+        out.push('<ul>' + listBuf.join('') + '</ul>');
+        listBuf = [];
+      }
+    };
+    const flushPara = () => {
+      if (paraBuf.length) {
+        out.push('<p>' + this.inline(paraBuf.join(' ')) + '</p>');
+        paraBuf = [];
+      }
+    };
+    const flushAll = () => { flushList(); flushPara(); };
+
+    for (const raw of lines) {
+      const line = raw.trimEnd();
+
+      if (!line.trim()) {
+        flushAll();
+        continue;
+      }
+
+      // Horizontal rule
+      if (/^-{3,}\s*$/.test(line)) {
+        flushAll();
+        out.push('<hr/>');
+        continue;
+      }
+
+      // Heading (#, ##, ###, ...)
+      const h = line.match(/^(#{1,6})\s+(.+?)\s*#*$/);
+      if (h) {
+        flushAll();
+        const tag = 'h' + Math.min(6, h[1].length + 2);
+        out.push(`<${tag}>${this.inline(h[2])}</${tag}>`);
+        continue;
+      }
+
+      // List item ("- ..." or "* ...")
+      const li = line.match(/^\s*[-*]\s+(.+)$/);
+      if (li) {
+        flushPara();
+        listBuf.push(`<li>${this.inline(li[1])}</li>`);
+        continue;
+      }
+
+      // Default: paragraph line (joined with the next non-list line)
+      flushList();
+      paraBuf.push(line);
+    }
+
+    flushAll();
+    return out.join('');
+  }
+
+  private inline(text: string): string {
+    // Escape HTML before applying markdown so AI output cannot inject tags.
+    const escaped = text
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;');
+
+    return escaped
+      .replace(/\[([^\]]+)\]\(([^)\s]+)\)/g, '<a href="$2" target="_blank" rel="noopener">$1</a>')
+      .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
+      .replace(/(^|[^*])\*([^*\n]+)\*(?!\*)/g, '$1<em>$2</em>')
+      .replace(/`([^`]+)`/g, '<code>$1</code>');
   }
 
   private scrollToBottom() {
