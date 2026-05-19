@@ -2,27 +2,78 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>Trisha Mae Esguerra Santos, RPh - Clinical Pharmacist Portfolio</title>
+  <title>Trisha Mae Esguerra Santos, RPh — Clinical Pharmacist & Medical Editor</title>
   <base href="/">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Trisha Mae Esguerra Santos, RPh - Registered Pharmacist with expertise in medication therapy management, medical editing, and patient-centered care in the Philippines.">
-  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#0d9488">
+  <meta name="description" content="Trisha Mae Esguerra Santos, RPh — Registered Pharmacist and Medical Editor with 7+ years of clinical and editorial expertise in medication therapy management, ICU/CCU pharmacy, antimicrobial stewardship, and pharmaceutical content development.">
+  <meta name="author" content="Trisha Mae Esguerra Santos, RPh">
+
+  <!-- Always serve the latest version (prevent index.html caching) -->
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate, max-age=0">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+
+  <meta property="og:title" content="Trisha Mae Esguerra Santos, RPh — Pharmacist + Medical Editor">
+  <meta property="og:description" content="Clinical pharmacy expertise meets editorial precision. 7+ years bridging patient care and pharmaceutical communication.">
+  <meta property="og:type" content="website">
+
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="alternate icon" type="image/x-icon" href="favicon.ico">
+  <link rel="apple-touch-icon" href="apple-touch-icon.svg">
+  <link rel="mask-icon" href="favicon.svg" color="#0d9488">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  
-  <!-- Single Page Apps for GitHub Pages -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;1,500;1,600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
   <script type="text/javascript">
-    // Single Page Apps for GitHub Pages
-    // https://github.com/rafrex/spa-github-pages
-    // Copyright (c) 2016 Rafael Pedicini, licensed under the MIT License
-    // ----------------------------------------------------------------------
-    // This script checks to see if a redirect is present in the query string,
-    // converts it back into the correct url and adds it to the
-    // browser's history using window.history.replaceState(...)
+    // ---------- Cache busting / fresh-load guard ----------
+    (function() {
+      try {
+        // 1. Strip any legacy ServiceWorker + CacheStorage from prior versions.
+        if ('serviceWorker' in navigator) {
+          navigator.serviceWorker.getRegistrations().then(function(regs) {
+            regs.forEach(function(r) { r.unregister(); });
+          }).catch(function() {});
+        }
+        if (typeof caches !== 'undefined' && caches.keys) {
+          caches.keys().then(function(keys) {
+            keys.forEach(function(k) { caches.delete(k); });
+          }).catch(function() {});
+        }
+
+        // 2. Build-version reload: if the deployed version.json changed since
+        //    the last visit, force-refresh stale tabs. Hashed bundle filenames
+        //    already bust correctly on a fresh document load; this catches
+        //    long-open tabs that haven't re-fetched index.html yet.
+        var VERSION_KEY = 'app.buildVersion';
+        var url = 'version.json?_=' + Date.now();
+        fetch(url, { cache: 'no-store' })
+          .then(function(r) { return r.ok ? r.json() : null; })
+          .then(function(data) {
+            if (!data || !data.version) return;
+            var stored = null;
+            try { stored = localStorage.getItem(VERSION_KEY); } catch (e) {}
+            if (stored && stored !== String(data.version)) {
+              try { localStorage.setItem(VERSION_KEY, String(data.version)); } catch (e) {}
+              if (!sessionStorage.getItem('app.reloaded')) {
+                sessionStorage.setItem('app.reloaded', '1');
+                location.reload();
+              }
+            } else if (!stored) {
+              try { localStorage.setItem(VERSION_KEY, String(data.version)); } catch (e) {}
+            } else {
+              sessionStorage.removeItem('app.reloaded');
+            }
+          })
+          .catch(function() {});
+      } catch (e) { /* no-op */ }
+    })();
+
+    // ---------- SPA GitHub Pages redirect handler ----------
     (function(l) {
       if (l.search[1] === '/' ) {
-        var decoded = l.search.slice(1).split('&').map(function(s) { 
+        var decoded = l.search.slice(1).split('&').map(function(s) {
           return s.replace(/~and~/g, '&')
         }).join('?');
         window.history.replaceState(null, null,

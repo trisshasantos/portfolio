@@ -1,6 +1,6 @@
 {
   "/api/*": {
-    "target": "https://epic-backend-62lr1dfmi-beingmartinbmcs-projects.vercel.app",
+    "target": "https://ai-gateway-production-0388.up.railway.app",
     "secure": true,
     "changeOrigin": true,
     "logLevel": "debug",
