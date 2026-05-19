@@ -182,7 +182,7 @@ Do not include religious references, spiritual content, or biblical quotes in yo
     };
 
     try {
-      const response = await this.http.post<any>(`${this.apiUrl}/chat/completions`, requestBody, {
+      const response = await this.http.post<any>(this.apiUrl, requestBody, {
         headers: {
           'accept': 'application/json',
           'content-type': 'application/json'
