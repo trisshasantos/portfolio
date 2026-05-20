@@ -14,8 +14,7 @@
         </h1>
 
         <p class="hero-name">
-          <span class="script-accent">— I'm</span>
-          <strong>Trisha Mae Esguerra Santos, RPh</strong>
+          <span class="script-accent">— I'm </span><strong>Trisha Mae Esguerra Santos</strong>
         </p>
 
         <p class="hero-description">
@@ -26,13 +25,6 @@
           <a routerLink="/about" class="btn btn-primary">Discover My Story</a>
           <a routerLink="/contact" class="btn btn-secondary">Let's Connect</a>
         </div>
-
-        <ul class="hero-pills" aria-label="Practice areas">
-          <li class="hero-pill"><span>℞</span> Medication Therapy</li>
-          <li class="hero-pill"><span>♥</span> ICU / CCU</li>
-          <li class="hero-pill"><span>✎</span> Drug Monographs</li>
-          <li class="hero-pill"><span>⚙</span> Antimicrobial Stewardship</li>
-        </ul>
       </div>
 
       <div class="hero-visual animate-fadeInUp">
@@ -41,10 +33,6 @@
             <div class="profile-frame">
               <img src="images/profile.png" alt="Portrait of Trisha Mae Esguerra Santos" />
               <div class="profile-overlay"></div>
-            </div>
-            <div class="profile-badge">
-              <span class="badge-dot"></span>
-              Available for collaboration
             </div>
           </div>
 
@@ -57,7 +45,7 @@
               </div>
             </div>
             <ul class="rx-creds">
-              <li><span class="rx-check">✓</span> PRC Licensed Pharmacist</li>
+              <li><span class="rx-check">✓</span> Licensed Pharmacist</li>
               <li><span class="rx-check">✓</span> 7+ Years Clinical Practice</li>
               <li><span class="rx-check">✓</span> ICU / CCU Experience</li>
               <li><span class="rx-check">✓</span> Antimicrobial Stewardship</li>
@@ -67,14 +55,12 @@
           <div class="visual-card visual-card--edit glass">
             <div class="edit-row">
               <span class="edit-icon">✎</span>
-              <div class="edit-title">Drug monograph · Draft 3</div>
+              <div class="edit-title">{{ currentEntry.title }}</div>
             </div>
             <div class="edit-text">
-              <span class="edit-line"></span>
-              <span class="edit-line edit-line--mid"></span>
-              <span class="edit-line edit-line--short"></span>
+              <p class="edit-description">{{ currentEntry.description }}</p>
             </div>
-            <div class="edit-foot">Reviewed by <em>T. Santos, RPh</em></div>
+            <div class="edit-foot">Reviewed by <em>{{ currentEntry.reviewer }}</em></div>
           </div>
 
           <div class="floating-emojis" aria-hidden="true">
