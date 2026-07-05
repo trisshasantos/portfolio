@@ -201,8 +201,6 @@
   border-radius: var(--r-pill);
   background: linear-gradient(90deg, var(--bar-c1), var(--bar-c2));
   transform-origin: left center;
-  animation: skillFill 1.4s var(--ease-out) both;
-  animation-delay: 0.25s;
   position: relative;
 
   &::after {
@@ -218,9 +216,14 @@
   }
 }
 
-@keyframes skillFill {
-  from { transform: scaleX(0); }
-  to   { transform: scaleX(1); }
+/* Bars fill as each skills group scrolls into view (JS-gated;
+   SSR / no-JS keeps them full). */
+.reveal-ready .skill-bar-fill {
+  transform: scaleX(0);
+  transition: transform 1.1s var(--ease-out) 0.15s;
+}
+.reveal-ready .reveal-stagger.is-revealed .skill-bar-fill {
+  transform: scaleX(1);
 }
 
 /* ============== Responsive ============== */

@@ -39,20 +39,20 @@
   --gold-600: #d97706;
   --gold-700: #b45309;
 
-  /* Neutral surfaces */
-  --paper:        #fdfcf7;
-  --paper-warm:   #faf6ec;
+  /* Neutral surfaces — cool clinical near-whites */
+  --paper:        #f6fafb;
+  --paper-warm:   #eef6f5;
   --surface:      #ffffff;
-  --surface-alt:  #f5f4ef;
-  --line:         #e7e3d6;
-  --line-strong:  #d6d1bf;
+  --surface-alt:  #eef4f5;
+  --line:         #e0eaec;
+  --line-strong:  #cbd9dc;
 
   /* Text */
-  --text-1: #14231f;
-  --text-2: #3a4a44;
-  --text-3: #6b7770;
-  --text-4: #9aa39c;
-  --text-inverse: #fdfcf7;
+  --text-1: #0f2320;
+  --text-2: #374a46;
+  --text-3: #66756f;
+  --text-4: #98a5a0;
+  --text-inverse: #f6fafb;
 
   /* Brand semantic tokens */
   --brand:        var(--rx-teal-600);
@@ -65,18 +65,24 @@
   /* Gradients */
   --grad-hero: linear-gradient(135deg, #0f766e 0%, #14b8a6 45%, #f59e0b 100%);
   --grad-soft: linear-gradient(135deg, rgba(20,184,166,0.10) 0%, rgba(245,158,11,0.10) 100%);
-  --grad-paper: linear-gradient(180deg, #fdfcf7 0%, #f5f4ef 100%);
+  --grad-paper: linear-gradient(180deg, #ffffff 0%, #eef4f5 100%);
   --grad-clinical: linear-gradient(135deg, #0d9488 0%, #14b8a6 100%);
   --grad-editor: linear-gradient(135deg, #b45309 0%, #f59e0b 100%);
-  --grad-ink: linear-gradient(135deg, #14231f 0%, #2e2b1e 100%);
+  --grad-ink: linear-gradient(135deg, #0f2320 0%, #143b36 100%);
+  /* Aurora mesh — modern, layered brand glow for hero & feature surfaces */
+  --grad-aurora:
+    radial-gradient(60% 90% at 12% 8%, rgba(20, 184, 166, 0.30), transparent 60%),
+    radial-gradient(55% 80% at 92% 12%, rgba(45, 212, 191, 0.24), transparent 62%),
+    radial-gradient(70% 90% at 78% 96%, rgba(245, 158, 11, 0.18), transparent 60%),
+    radial-gradient(60% 80% at 20% 100%, rgba(15, 118, 110, 0.22), transparent 60%);
 
-  /* Shadows */
-  --shadow-xs: 0 1px 2px rgba(20, 35, 31, 0.04);
-  --shadow-sm: 0 2px 6px rgba(20, 35, 31, 0.06), 0 1px 2px rgba(20, 35, 31, 0.04);
-  --shadow-md: 0 8px 24px rgba(20, 35, 31, 0.08), 0 2px 6px rgba(20, 35, 31, 0.04);
-  --shadow-lg: 0 20px 50px rgba(20, 35, 31, 0.12), 0 6px 16px rgba(20, 35, 31, 0.06);
-  --shadow-glow: 0 0 0 4px rgba(20, 184, 166, 0.15), 0 12px 30px rgba(13, 148, 136, 0.18);
-  --shadow-amber: 0 12px 30px rgba(245, 158, 11, 0.25);
+  /* Shadows — cool, soft, layered */
+  --shadow-xs: 0 1px 2px rgba(12, 38, 44, 0.05);
+  --shadow-sm: 0 2px 8px rgba(12, 38, 44, 0.06), 0 1px 2px rgba(12, 38, 44, 0.05);
+  --shadow-md: 0 10px 30px rgba(12, 38, 44, 0.09), 0 3px 8px rgba(12, 38, 44, 0.05);
+  --shadow-lg: 0 28px 64px rgba(12, 38, 44, 0.14), 0 10px 22px rgba(12, 38, 44, 0.07);
+  --shadow-glow: 0 0 0 4px rgba(20, 184, 166, 0.16), 0 16px 40px rgba(13, 148, 136, 0.22);
+  --shadow-amber: 0 14px 34px rgba(245, 158, 11, 0.26);
 
   /* Type */
   --font-sans: 'Inter', 'Segoe UI', Tahoma, sans-serif;
@@ -147,8 +153,9 @@ body {
   overflow-x: hidden;
   padding-top: 84px;
   background-image:
-    radial-gradient(1200px 600px at 90% -10%, rgba(20, 184, 166, 0.08), transparent 60%),
-    radial-gradient(900px 500px at -10% 10%, rgba(245, 158, 11, 0.06), transparent 60%);
+    radial-gradient(1200px 620px at 92% -12%, rgba(20, 184, 166, 0.10), transparent 60%),
+    radial-gradient(1000px 560px at -12% 8%, rgba(45, 212, 191, 0.07), transparent 60%),
+    radial-gradient(900px 620px at 50% 118%, rgba(245, 158, 11, 0.06), transparent 60%);
   background-attachment: fixed;
 }
 
@@ -405,6 +412,48 @@ p { font-size: 1.0625rem; color: var(--text-2); margin-bottom: 1rem; }
 .stagger-children > *:nth-child(7) { animation-delay: 0.47s; }
 .stagger-children > *:nth-child(8) { animation-delay: 0.54s; }
 
+/* ---------- Scroll reveal (reactive, JS-gated) ----------
+   Hidden state only applies once JS adds `.reveal-ready` to <body>,
+   so SSR / no-JS renders every section fully visible. */
+.reveal-ready .reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s var(--ease-out), transform 0.8s var(--ease-out);
+  will-change: opacity, transform;
+}
+.reveal-ready .reveal.is-revealed { opacity: 1; transform: none; }
+
+.reveal-ready .reveal.reveal-left  { transform: translateX(-44px); }
+.reveal-ready .reveal.reveal-right { transform: translateX(44px); }
+.reveal-ready .reveal.reveal-scale { transform: scale(0.93); }
+.reveal-ready .reveal.reveal-left.is-revealed,
+.reveal-ready .reveal.reveal-right.is-revealed,
+.reveal-ready .reveal.reveal-scale.is-revealed { transform: none; }
+
+.reveal-ready .reveal.d-1 { transition-delay: 0.09s; }
+.reveal-ready .reveal.d-2 { transition-delay: 0.18s; }
+.reveal-ready .reveal.d-3 { transition-delay: 0.27s; }
+.reveal-ready .reveal.d-4 { transition-delay: 0.36s; }
+
+/* Container whose direct children cascade in on reveal */
+.reveal-ready .reveal-stagger > * {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.7s var(--ease-out), transform 0.7s var(--ease-out);
+  will-change: opacity, transform;
+}
+.reveal-ready .reveal-stagger.is-revealed > * { opacity: 1; transform: none; }
+.reveal-ready .reveal-stagger.is-revealed > *:nth-child(1)  { transition-delay: 0.05s; }
+.reveal-ready .reveal-stagger.is-revealed > *:nth-child(2)  { transition-delay: 0.12s; }
+.reveal-ready .reveal-stagger.is-revealed > *:nth-child(3)  { transition-delay: 0.19s; }
+.reveal-ready .reveal-stagger.is-revealed > *:nth-child(4)  { transition-delay: 0.26s; }
+.reveal-ready .reveal-stagger.is-revealed > *:nth-child(5)  { transition-delay: 0.33s; }
+.reveal-ready .reveal-stagger.is-revealed > *:nth-child(6)  { transition-delay: 0.40s; }
+.reveal-ready .reveal-stagger.is-revealed > *:nth-child(7)  { transition-delay: 0.47s; }
+.reveal-ready .reveal-stagger.is-revealed > *:nth-child(8)  { transition-delay: 0.54s; }
+.reveal-ready .reveal-stagger.is-revealed > *:nth-child(9)  { transition-delay: 0.61s; }
+.reveal-ready .reveal-stagger.is-revealed > *:nth-child(10) { transition-delay: 0.68s; }
+
 /* ---------- Responsive ---------- */
 @media (max-width: 1024px) {
   .container { padding: 0 1.5rem; }
@@ -429,6 +478,11 @@ p { font-size: 1.0625rem; color: var(--text-2); margin-bottom: 1rem; }
     transition-duration: 0.001ms !important;
     scroll-behavior: auto !important;
   }
+  .reveal-ready .reveal,
+  .reveal-ready .reveal-stagger > * {
+    opacity: 1 !important;
+    transform: none !important;
+  }
 }
 
 /* ---------- Utilities ---------- */
@@ -451,4 +505,60 @@ p { font-size: 1.0625rem; color: var(--text-2); margin-bottom: 1rem; }
   backdrop-filter: saturate(180%) blur(14px);
   -webkit-backdrop-filter: saturate(180%) blur(14px);
   border: 1px solid rgba(255,255,255,0.6);
+}
+
+/* Aurora mesh surface — layered brand glow that slowly drifts */
+.aurora {
+  position: relative;
+  isolation: isolate;
+  &::before {
+    content: '';
+    position: absolute;
+    inset: -20%;
+    background: var(--grad-aurora);
+    filter: blur(10px);
+    opacity: 0.9;
+    z-index: -1;
+    animation: auroraDrift 18s ease-in-out infinite alternate;
+  }
+}
+@keyframes auroraDrift {
+  0%   { transform: translate3d(-2%, -1%, 0) scale(1.02); }
+  50%  { transform: translate3d(2%, 1.5%, 0) scale(1.06); }
+  100% { transform: translate3d(-1%, 2%, 0) scale(1.03); }
+}
+
+/* Fine dotted grid — clinical "lab paper" texture */
+.dot-grid {
+  background-image: radial-gradient(rgba(15, 118, 110, 0.10) 1px, transparent 1px);
+  background-size: 22px 22px;
+}
+
+/* Thin gradient scroll-progress bar (driven by header component) */
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  width: 100%;
+  transform: scaleX(0);
+  transform-origin: 0 50%;
+  background: linear-gradient(90deg, var(--rx-teal-600), var(--rx-teal-400) 55%, var(--gold-500));
+  z-index: 1200;
+  will-change: transform;
+}
+
+/* Chip / pill used across sections */
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.4rem 0.85rem;
+  border-radius: var(--r-pill);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  background: var(--brand-soft);
+  color: var(--brand-strong);
+  border: 1px solid var(--rx-teal-200);
 }

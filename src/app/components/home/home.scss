@@ -5,6 +5,15 @@
   overflow: hidden;
 }
 
+/* Animated aurora mesh behind the hero (tuned softer than the utility default) */
+.hero-aurora {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  &::before { opacity: 0.5; filter: blur(24px); }
+}
+
 .hero-blob {
   position: absolute;
   border-radius: 50%;

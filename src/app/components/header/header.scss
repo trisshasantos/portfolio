@@ -8,17 +8,17 @@
               background var(--t-base) var(--ease-out),
               box-shadow var(--t-base) var(--ease-out),
               backdrop-filter var(--t-base) var(--ease-out);
-  background: rgba(253, 252, 247, 0.55);
+  background: rgba(246, 250, 251, 0.6);
   backdrop-filter: saturate(180%) blur(8px);
   -webkit-backdrop-filter: saturate(180%) blur(8px);
   border-bottom: 1px solid transparent;
 
   &.scrolled {
-    background: rgba(253, 252, 247, 0.85);
-    backdrop-filter: saturate(180%) blur(16px);
-    -webkit-backdrop-filter: saturate(180%) blur(16px);
+    background: rgba(246, 250, 251, 0.9);
+    backdrop-filter: saturate(180%) blur(18px);
+    -webkit-backdrop-filter: saturate(180%) blur(18px);
     border-bottom: 1px solid var(--line);
-    box-shadow: 0 8px 24px rgba(20, 35, 31, 0.06);
+    box-shadow: 0 10px 30px rgba(12, 38, 44, 0.07);
   }
 
   &.hidden { transform: translateY(-110%); }
@@ -185,7 +185,7 @@
     top: 64px;
     left: 0;
     right: 0;
-    background: rgba(253, 252, 247, 0.96);
+    background: rgba(246, 250, 251, 0.97);
     backdrop-filter: saturate(180%) blur(20px);
     -webkit-backdrop-filter: saturate(180%) blur(20px);
     flex-direction: column;
@@ -193,7 +193,7 @@
     gap: 0.35rem;
     padding: 1.5rem 1.15rem 2rem;
     border-bottom: 1px solid var(--line);
-    box-shadow: 0 18px 40px rgba(20, 35, 31, 0.10);
+    box-shadow: 0 18px 44px rgba(12, 38, 44, 0.12);
     transform: translateY(-12px);
     opacity: 0;
     pointer-events: none;

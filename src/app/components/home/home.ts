@@ -1,6 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { CountUpDirective } from '../../shared/count-up.directive';
 
 interface MonographEntry {
   title: string;
@@ -10,7 +11,7 @@ interface MonographEntry {
 
 @Component({
   selector: 'app-home',
-  imports: [RouterLink, CommonModule],
+  imports: [RouterLink, CommonModule, CountUpDirective],
   templateUrl: './home.html',
   styleUrl: './home.scss',
 })

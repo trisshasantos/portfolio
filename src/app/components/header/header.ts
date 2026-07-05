@@ -13,6 +13,7 @@ export class Header implements OnInit {
   isScrolled = false;
   lastScrollTop = 0;
   isHeaderVisible = true;
+  scrollProgress = 0;
   private isBrowser: boolean;
   private ticking = false;
 
@@ -44,7 +45,11 @@ export class Header implements OnInit {
     }
     
     const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-    
+
+    // Reading progress (0 → 1) for the top gradient bar
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    this.scrollProgress = docHeight > 0 ? Math.min(1, Math.max(0, scrollTop / docHeight)) : 0;
+
     // Header background change on scroll
     this.isScrolled = scrollTop > 50;
     
