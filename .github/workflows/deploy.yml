@@ -59,6 +59,10 @@ jobs:
           path: './dist/pharmacist-portfolio/browser'
 
   deploy:
+    # A pull_request ref cannot deploy to the protected github-pages environment, so the
+    # job failed on every PR. Excluding only pull_request keeps push and workflow_dispatch
+    # deploying, while the build job above still validates PRs.
+    if: github.event_name != 'pull_request'
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
