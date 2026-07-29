@@ -1,18 +1,20 @@
+import { provideZonelessChangeDetection } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AiMedicalAssistant } from './ai-medical-assistant';
+import { AiMedicalAssistantComponent } from './ai-medical-assistant';
 
-describe('AiMedicalAssistant', () => {
-  let component: AiMedicalAssistant;
-  let fixture: ComponentFixture<AiMedicalAssistant>;
+describe('AiMedicalAssistantComponent', () => {
+  let component: AiMedicalAssistantComponent;
+  let fixture: ComponentFixture<AiMedicalAssistantComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [AiMedicalAssistant]
+      imports: [AiMedicalAssistantComponent],
+      providers: [provideZonelessChangeDetection()]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(AiMedicalAssistant);
+    fixture = TestBed.createComponent(AiMedicalAssistantComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
