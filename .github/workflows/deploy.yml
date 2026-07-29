@@ -46,6 +46,9 @@ jobs:
         env:
           AI_GATEWAY_API_KEY: ${{ secrets.AI_GATEWAY_API_KEY }}
         run: |
+          # sed exits 0 on an empty substitution, so without this a missing secret
+          # ships a keyless bundle that 401s at runtime instead of failing the build.
+          test -n "$AI_GATEWAY_API_KEY" || { echo "::error::AI_GATEWAY_API_KEY secret is not set"; exit 1; }
           sed -i "s|__AI_GATEWAY_API_KEY__|${AI_GATEWAY_API_KEY}|" \
             src/app/shared/ai-gateway-api-key.interceptor.ts
 
