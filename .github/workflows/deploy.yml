@@ -35,6 +35,13 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Inject AI gateway API key
+        env:
+          AI_GATEWAY_API_KEY: ${{ secrets.AI_GATEWAY_API_KEY }}
+        run: |
+          sed -i "s|__AI_GATEWAY_API_KEY__|${AI_GATEWAY_API_KEY}|" \
+            src/app/shared/ai-gateway-api-key.interceptor.ts
+
       - name: Build Angular app
         run: npm run build:gh-pages
 
